@@ -5,11 +5,11 @@ def main():
     st.title("Snowflake Manual Connection")
 
     # Snowflake account details
-    account = st.text_input("Snowflake Account URL (without https://):")
-    region = st.selectbox("Region:", ["us-east-1", "us-west-2", "eu-west-1", "Central India (Pune)"])
-    username = st.text_input("Username:")
-    password = st.text_input("Password:", type="password")
-    database = st.text_input("Database:")
+    account = "xc60341.central-india.azure.snowflakecomputing.com"
+    region = "Central India (Pune)"
+    username = "SAICHARAN11"
+    password = "Saicharan@1101"
+    database = "MY_DB"
 
     if st.button("Connect"):
         conn_params = {
