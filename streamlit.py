@@ -7,7 +7,8 @@ def main():
     
     # Collect user input
     account = st.text_input("Snowflake Account URL (without https://):")
-    region = st.selectbox("Region:", ["us-east-1", "us-west-2", "eu-west-1","Central India (Pune)"])  # Add more regions if needed
+    region = st.selectbox("Region:", ["us-east-1", "us-west-2", "eu-west-1", "Central India (Pune)"])
+    database = st.text_input("Database:")
     username = st.text_input("Username:")
     password = st.text_input("Password:", type="password")
     
@@ -22,16 +23,22 @@ def main():
                     user=username,
                     password=password,
                     account=account,
-                    region=region
+                    region=region,
+                    database=database
                 )
                 
+                # Display connection success message
                 st.write("Connected to Snowflake!")
+                
+                # Collected Information
                 st.write("Collected Information:")
                 st.write(f"Snowflake Account: {account}")
                 st.write(f"Region: {region}")
+                st.write(f"Database: {database}")
                 
-                # Don't forget to close the connection when done
+                # Close the connection
                 conn.close()
+                
                 break  # Successful connection, exit loop
             except snowflake.connector.errors.DatabaseError as e:
                 st.write(f"Connection attempt {attempt} failed. Retrying...")
