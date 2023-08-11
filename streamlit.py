@@ -7,7 +7,7 @@ def main():
 
     # Snowflake account details
     account = "xc60341.central-india.azure.snowflakecomputing.com"
-    region = "central-india"  # Use the correct region code or name
+    region = "central-india" 
     username = "SAICHARAN11"
     password = "Saicharan@1101"
     database = "MY_DB"
