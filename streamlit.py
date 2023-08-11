@@ -31,6 +31,7 @@ def main():
 
             # Execute a simple query
             cursor = conn.cursor()
+            cursor.execute("SELECT CURRENT_VERSION()")
             result = cursor.fetchone()
 
             # Display Snowflake query result
