@@ -31,12 +31,10 @@ def main():
 
             # Execute a simple query
             cursor = conn.cursor()
-            cursor.execute("SELECT CURRENT_VERSION()")
             result = cursor.fetchone()
 
             # Display Snowflake query result
             st.write("Connected to Snowflake!")
-            st.write("Snowflake Version:", result[0])
 
             # Close Snowflake cursor and connection
             cursor.close()
