@@ -1,12 +1,13 @@
 import streamlit as st
 import snowflake.connector
+import time
 
 def main():
     st.title("Snowflake Manual Connection")
 
     # Snowflake account details
     account = "xc60341.central-india.azure.snowflakecomputing.com"
-    region = "Central India (Pune)"
+    region = "central-india"  # Use the correct region code or name
     username = "SAICHARAN11"
     password = "Saicharan@1101"
     database = "MY_DB"
