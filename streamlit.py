@@ -7,7 +7,7 @@ def main():
 
     # Snowflake account details
     account = "xc60341.central-india.azure.snowflakecomputing.com"
-    region = "central-india" 
+    region = "AZURE_CENTRALINDIA"  # Use the correct region code
     username = "SAICHARAN11"
     password = "Saicharan@1101"
     database = "MY_DB"
@@ -25,14 +25,17 @@ def main():
             # Establish a connection
             conn = snowflake.connector.connect(**conn_params)
 
-            # Execute a simple query
+            # Execute a simple query to verify connection
             cursor = conn.cursor()
-            cursor.execute("SELECT CURRENT_VERSION()")
+            cursor.execute("SELECT CURRENT_REGION(), CURRENT_ACCOUNT(), CURRENT_DATABASE(), CURRENT_USER()")
             result = cursor.fetchone()
 
             # Display the query result
             st.write("Connected to Snowflake!")
-            st.write("Snowflake Version:", result[0])
+            st.write("Current Region:", result[0])
+            st.write("Current Account:", result[1])
+            st.write("Current Database:", result[2])
+            st.write("Current User:", result[3])
 
             # Close the cursor and connection
             cursor.close()
