@@ -8,7 +8,6 @@ def main():
     # Collect user input
     account = st.text_input("Snowflake Account URL (without https://):")
     region = st.selectbox("Region:", ["us-east-1", "us-west-2", "eu-west-1","Central India (Pune)"])  # Add more regions if needed
-    database = st.text_input("Database:")
     username = st.text_input("Username:")
     password = st.text_input("Password:", type="password")
     
@@ -23,15 +22,13 @@ def main():
                     user=username,
                     password=password,
                     account=account,
-                    region=region,
-                    database=database
+                    region=region
                 )
                 
                 st.write("Connected to Snowflake!")
                 st.write("Collected Information:")
                 st.write(f"Snowflake Account: {account}")
                 st.write(f"Region: {region}")
-                st.write(f"Database: {database}")
                 
                 # Don't forget to close the connection when done
                 conn.close()
