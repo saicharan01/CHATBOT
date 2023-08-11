@@ -1,13 +1,12 @@
 import streamlit as st
 import openai
 import snowflake.connector
-import os
 
 # Set your OpenAI API key
-openai.api_key = os.environ.get("OPENAI_API_KEY")
+openai.api_key = "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"
 
 def main():
-    st.title("Snowflake Connection and Chat")
+    st.title("Snowflake Manual Connection and Chat")
 
     # Snowflake account details
     account = st.text_input("Snowflake Account URL (without https://):")
@@ -36,6 +35,7 @@ def main():
 
             # Display Snowflake query result
             st.write("Connected to Snowflake!")
+            st.write("Snowflake Version:", result[0])
 
             # Close Snowflake cursor and connection
             cursor.close()
@@ -46,13 +46,12 @@ def main():
 
     # Language model interaction
     st.header("Language Model Interaction")
-    eng = st.selectbox("Engine", ["davinci-codex"])
     prompt = st.text_area("Enter your prompt:")
     if st.button("Generate Response"):
         try:
             # Call the language model to generate a response
             response = openai.Completion.create(
-                engine=eng,  # Choose an appropriate engine
+                engine="davinci-codex",  # Choose an appropriate engine
                 prompt=prompt,
                 max_tokens=50  # Adjust as needed
             )
