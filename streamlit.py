@@ -3,7 +3,7 @@ import openai
 import snowflake.connector
 
 # Set your OpenAI API key
-openai.api_key = "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"
+openai.api_key = "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"
 
 def main():
     st.title("Snowflake Manual Connection and Chat")
