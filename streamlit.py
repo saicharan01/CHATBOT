@@ -2,7 +2,7 @@ import streamlit as st
 import snowflake.connector
 
 def main():
-    st.title("Snowflake Manual Connection")
+    st.title("Snowflake Connection Setup")
 
     # Snowflake account details
     account = st.text_input("Snowflake Account URL (without https://):")
