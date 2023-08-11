@@ -1,9 +1,10 @@
 import streamlit as st
 import openai
 import snowflake.connector
+import os
 
 # Set your OpenAI API key
-openai.api_key = "28LAJnzthiYoUUF57XJnT3BlbkFJJuEQwPSPigrPbPEJG3A7"
+openai.api_key = os.environ.get("OPENAI_API_KEY")
 
 def main():
     st.title("Snowflake Connection and Chat")
