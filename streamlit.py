@@ -1,8 +1,12 @@
 import streamlit as st
+import openai
 import snowflake.connector
 
+# Set your OpenAI API key
+openai.api_key = "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"
+
 def main():
-    st.title("Snowflake Connection Setup")
+    st.title("Snowflake Manual Connection and Chat")
 
     # Snowflake account details
     account = st.text_input("Snowflake Account URL (without https://):")
@@ -21,7 +25,7 @@ def main():
         }
 
         try:
-            # Establish a connection
+            # Establish a connection to Snowflake
             conn = snowflake.connector.connect(**conn_params)
 
             # Execute a simple query
@@ -29,16 +33,34 @@ def main():
             cursor.execute("SELECT CURRENT_VERSION()")
             result = cursor.fetchone()
 
-            # Display the query result
+            # Display Snowflake query result
             st.write("Connected to Snowflake!")
             st.write("Snowflake Version:", result[0])
 
-            # Close the cursor and connection
+            # Close Snowflake cursor and connection
             cursor.close()
             conn.close()
+
         except snowflake.connector.errors.DatabaseError as e:
             st.error(f"Connection failed. Error: {e}")
 
+    # Language model interaction
+    st.header("Language Model Interaction")
+    prompt = st.text_area("Enter your prompt:")
+    if st.button("Generate Response"):
+        try:
+            # Call the language model to generate a response
+            response = openai.Completion.create(
+                engine="davinci-codex",  # Choose an appropriate engine
+                prompt=prompt,
+                max_tokens=50  # Adjust as needed
+            )
+
+            # Display the generated response
+            st.write("Generated Response:")
+            st.write(response.choices[0].text)
+        except Exception as e:
+            st.error(f"Error generating response: {e}")
+
 if __name__ == "__main__":
     main()
-
