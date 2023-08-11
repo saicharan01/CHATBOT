@@ -45,7 +45,7 @@ def main():
             response = openai.Completion.create(
                 engine="davinci-codex",
                 prompt=prompt,
-                max_tokens=50  # Adjust as needed
+                max_tokens=50 
             )
 
             # Display the generated response
