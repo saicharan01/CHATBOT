@@ -6,7 +6,7 @@ import snowflake.connector
 openai.api_key = "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"
 
 def main():
-    st.title("Snowflake Manual Connection and Chat")
+    st.title("Snowflake Connection and Chat")
 
     # Snowflake account details
     account = st.text_input("Snowflake Account URL (without https://):")
