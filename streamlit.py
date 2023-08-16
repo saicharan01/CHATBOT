@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 import snowflake.connector
 
-openai.api_key = "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"
+openai.api_key = "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"
 
 def main():
     st.title("Snowflake Manual Connection and Chat")
